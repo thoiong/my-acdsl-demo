@@ -7,20 +7,20 @@ Demonstating concept of writing application configuration in a text file (.myacd
 
 Require eclipse with xtext plug-in.  For more information, see https://eclipse.org/Xtext/ 
 
-#==================================
+#================================================================================
 # To experiment with the language:
-#==================================
+#================================================================================
 1. get a functional eclipse IDE with xtext plug-in 
 2. checkout/clone this repo
 3. import all projects
 4. to play with the language gramma - edit MyACDSL.xtext, save, right click  >Run As > Generate Xtext Artifacts
 5. to play with scripts generator - edit MyACDSLGenerator.xtend
 
-#==================================
-# To use the language:
-#==================================
+#================================================================================
+# To use the language: sample.myacdsl included under org.acac.demo.acdsl project
+#================================================================================
 - right click "org.acac.demo.acdsl" project > Run As > Eclipse Application
-- create a general prject
+- create a general project
 - create new file with extension .myacdsl
 - edit .myacdsl, save, checkout contents of generated scripts.
 
