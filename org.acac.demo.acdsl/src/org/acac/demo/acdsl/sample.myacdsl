@@ -1,0 +1,22 @@
+configuration of myTestApp on Linux OS, Tomcat Server
+begin-common-parameters
+commonParam APP_PACKAGE "/path/to/myTestApp/file"
+commonParam TOMCAT_WEBAPP "/path/to/tomcat/webapp"
+commonParam DEPLOY_APP_OP1 "uninstall"
+commonParam DEPLOY_APP_OP2 "install"
+commonParam DEPLOY_APP_USAGE_PARAMS "${DEPLOY_APP_OP1}|${DEPLOY_APP_OP2}"
+commonParam KNOWN_DEPLOY_APP_OPS "${DEPLOY_APP_OP1} ${DEPLOY_APP_OP2}"
+commonParam MANAGE_ENV_OP1 "stop"
+commonParam MANAGE_ENV_OP2 "start"
+commonParam MANAGE_ENV_OP3 "restart"
+commonParam MANAGE_ENV_USAGE_PARAMS "${MANAGE_ENV_OP1}|${MANAGE_ENV_OP2}|${MANAGE_ENV_OP3}"
+commonParam KNOWN_MANAGE_ENV_OPS "${MANAGE_ENV_OP1} ${MANAGE_ENV_OP2} ${MANAGE_ENV_OP3}"
+end-common-parameters
+
+begin-application-configuration
+//application server configuration 
+end-application-configuration
+
+//operations
+deployment operations: uninstall install update
+operation stop start restart
