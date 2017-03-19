@@ -1,0 +1,91 @@
+grammar org.acac.demo.acdsl.MyACDSL with org.eclipse.xtext.common.Terminals
+
+generate myACDSL "http://www.acac.org/demo/acdsl/MyACDSL"
+
+Model:
+	elements+=AbstractElement*;
+
+DOUBLE:
+	INT '.' INT;
+
+enum SupportedContainer:
+	WebSphere | Tomcat;
+
+enum SupportedContainerOperations:
+	stop | start | restart;
+
+enum SupportedOs:
+	Linux | Win | Aix;
+
+enum DeploymentOp:
+	uninstall | install | update;
+
+AbstractElement:
+	Configuration | Deployment | Operation;
+
+Configuration:
+	'configuration' 'of'
+	appName=ID 'on'
+	os=SupportedOs 'OS,'
+	appServer=AppServerInfo 'Server'
+	'begin-common-parameters'
+	commonParams+=CommonParam*
+	'end-common-parameters'
+	'begin-application-configuration'
+	configurations+=ConfigurationType*
+	'end-application-configuration';
+
+Deployment:
+	{Deployment}
+	'deployment' 'operations:'
+	appOp+=DeploymentOp*;
+
+Operation:
+	{Operation}
+	'operation'
+	serverOp+=SupportedContainerOperations*;
+
+AppServerInfo:
+	name=SupportedContainer | 'all'
+	version=DOUBLE;
+
+CommonParam:
+	'commonParam'
+	name=ID
+	value=STRING;
+
+ConfigurationType:
+	ServerJvmSetting | JAASAlias | JdbcProvider | DataSource;
+
+DataSource:
+	'dataSource'
+	scope=[CommonParam]
+	dataSourceName=STRING
+	jndiName=STRING
+	jdbcProviderName=STRING
+	dataSourceUrl=STRING
+	componentManagedAuthenticationAlias=[CommonParam]
+	mappingConfigurationAlias=[CommonParam]
+	containerMmanagedAuthenticationAlias=[CommonParam];
+
+JdbcProvider:
+	'jdbcProvider'
+	scope=[CommonParam]
+	databaseType=STRING
+	providerType=STRING
+	implementationType=STRING
+	name=STRING
+	description=STRING
+	classpath=[CommonParam];
+
+JAASAlias:
+	'jaasAlias'
+	alias=[CommonParam]
+	username=STRING
+	password=STRING;
+
+ServerJvmSetting:
+	'serverJvmSetting'
+	name=STRING
+	value=STRING;
+

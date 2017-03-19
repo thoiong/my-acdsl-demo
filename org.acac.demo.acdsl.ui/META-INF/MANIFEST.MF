@@ -1,0 +1,25 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.acac.demo.acdsl.ui
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.acac.demo.acdsl.ui; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.acac.demo.acdsl,
+ org.acac.demo.acdsl.ide,
+ org.eclipse.xtext.ui,
+ org.eclipse.xtext.ui.shared,
+ org.eclipse.xtext.ui.codetemplates.ui,
+ org.eclipse.ui.editors;bundle-version="3.5.0",
+ org.eclipse.ui.ide;bundle-version="3.5.0",
+ org.eclipse.ui,
+ org.eclipse.compare,
+ org.eclipse.xtext.builder,
+ org.eclipse.xtend.lib;resolution:=optional,
+ org.eclipse.xtext.xbase.lib
+Import-Package: org.apache.log4j
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: org.acac.demo.acdsl.ui.quickfix,
+ org.acac.demo.acdsl.ui.internal,
+ org.acac.demo.acdsl.ui.contentassist
+Bundle-Activator: org.acac.demo.acdsl.ui.internal.AcdslActivator
